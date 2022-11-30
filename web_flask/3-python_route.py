@@ -20,12 +20,12 @@ def hi():
 
 @app.route('/c/<text>', strict_slashes=False)
 def gm(text):
-    return ('C %s' % text.replace('_', ' '))
+        return ('C {}'.format(text.replace('_', ' ')))
 
-@app.route('/c/<text>', strict_slashes=False)
+@app.route('/python/<text>', strict_slashes=False)
 def pyth(text):
     if len(text):
-        return ('Python %s' % text.replace('_', ' '))
+            return ('C {}'.format(text.replace('_', ' ')))
     else:
         return ('Python is cool')
 
