@@ -20,17 +20,18 @@ def hi():
 
 @app.route('/c/<text>', strict_slashes=False)
 def gm(text):
-    return 'C %s' % text.replace("_", " ")
+    return ('C {}'.format(text.replace('_', ' ')))
 
 
 @app.route('/python/<text>', strict_slashes=False)
 def pyth(text="is cool"):
-    return 'Python %s' % text.replace("_", " ")
+
+    return ('Python {}'.format(text.replace('_', ' ')))
 
 
 @app.route('/number/<int:n>', strict_slashes=False)
 def num(n):
-    return '%d is a number' % n
+    return ('{} is a number'.format(n))
 
 
 @app.route('/number_template/<int:n>', strict_slashes=False)
