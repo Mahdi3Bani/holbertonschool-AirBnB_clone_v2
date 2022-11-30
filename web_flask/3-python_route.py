@@ -20,14 +20,16 @@ def hi():
 
 @app.route('/c/<text>', strict_slashes=False)
 def gm(text):
-        return ('C {}'.format(text.replace('_', ' ')))
+    return ('C {}'.format(text.replace('_', ' ')))
+
 
 @app.route('/python/<text>', strict_slashes=False)
 def pyth(text):
     if len(text):
-            return ('C {}'.format(text.replace('_', ' ')))
+        return ('Python {}'.format(text.replace('_', ' ')))
     else:
         return ('Python is cool')
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
