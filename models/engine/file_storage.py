@@ -67,5 +67,5 @@ class FileStorage:
             del self.__objects[key]
 
     def close(self):
-        """Close storage session."""
+       
         self.reload(self)
