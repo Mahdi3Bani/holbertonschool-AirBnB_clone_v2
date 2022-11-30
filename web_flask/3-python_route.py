@@ -24,11 +24,8 @@ def gm(text):
 
 
 @app.route('/python/<text>', strict_slashes=False)
-def pyth(text):
-    if len(text):
+def pyth(text = "is cool"):
         return ('Python {}'.format(text.replace('_', ' ')))
-    else:
-        return ('Python is cool')
 
 
 if __name__ == '__main__':
