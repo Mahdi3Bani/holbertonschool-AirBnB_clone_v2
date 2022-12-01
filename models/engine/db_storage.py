@@ -36,15 +36,20 @@ class DBStorage():
         If cls is None, queries all types of objects.
         Return:
         Dict of queried classes in the format <class name>.<obj id> = obj."""
+        objects = dict()
+        all_classes = (User, State, City, Amenity, Place, Review)
         if cls is None:
-            objs = self.__session.query(State, City, User,
-                                        Review, Place, Amenity).all()
+            for class_type in all_classes:
+                query = self.__session.query(class_type)
+                for obj in query.all():
+                    obj_key = '{}.{}'.format(obj.__class__.__name__, obj.id)
+                    objects[obj_key] = obj
         else:
-            objs = self.__session.query(cls.__class__.__name__)
-        resu = {}
-        for obj in objs:
-            resu[obj.__class__.__name__ + "." + obj.id] = obj
-        return resu
+            query = self.__session.query(cls)
+            for obj in query.all():
+                obj_key = '{}.{}'.format(obj.__class__.__name__, obj.id)
+                objects[obj_key] = obj
+        return objects
 
     def new(self, obj):
         """Add obj to the current database session."""
